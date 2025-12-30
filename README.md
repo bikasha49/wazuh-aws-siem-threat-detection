@@ -1,76 +1,122 @@
-# 🛡️ Cloud SIEM Threat Hunting and Detection (Wazuh & AWS)
+# Cloud SIEM Threat Hunting and Detection using Wazuh and AWS
 
-## **Executive Summary**
-Designed and implemented a cloud-native Security Operations Center (SOC) hub using **Wazuh (SIEM/XDR)** on **AWS** to support real-world security operations. I architected a multi-node environment to monitor a **Windows Server 2022** endpoint, focusing on proactive **threat hunting**, **compliance engineering**, and **automated incident response**. This project demonstrates the full detection lifecycle: from identifying a vulnerability baseline of 26% to engineering custom rules that detect and remediate adversary behavior in real-time.
+## Project Summary
+Built and operated a cloud based SIEM by deploying Wazuh on AWS EC2 and integrating a Windows Server 2022 endpoint. I configured secure communication, collected endpoint telemetry, enabled compliance and file integrity monitoring, enriched alerts with threat intelligence, mapped detections to the MITRE ATT&CK framework, and performed threat hunting using dashboards and event level analysis following a real SOC analyst workflow.
 
----
+## Project Objectives
+• Build a cloud based SIEM environment  
+• Detect real attack behavior on endpoints  
+• Practice SOC analyst threat hunting workflow  
+• Align detections with industry frameworks  
 
-## **🏗️ Infrastructure & Security Architecture**
-The architecture adheres to the **Principle of Least Privilege**, featuring a hardened manager node and encrypted telemetry tunnels.
+## Environment Setup
+• Deployed Wazuh Manager on AWS EC2 Linux  
+• Configured AWS security groups for controlled access  
+• Enabled TLS encrypted agent to manager communication  
+• Accessed Wazuh dashboard securely over HTTPS  
 
-![Architecture Diagram](diagram-image.jpg)
+[Add screenshot: AWS EC2 instance and security group configuration]
 
-* **SIEM Manager**: Amazon Linux 2023 EC2 (AWS Cloud).
-* **Monitored Endpoint**: Windows Server 2022 DataCenter (AWS Cloud).
-* **Networking**: AWS Security Groups configured to permit only encrypted agent traffic (Port 1514/1515) and secure HTTPS management (Port 443).
-* **Telemetry**: Real-time event streaming via AES-encrypted tunnels with automated reconnection logic.
+## Endpoint Configuration
+• Installed Wazuh agent on Windows Server 2022  
+• Enrolled agent with the Wazuh Manager  
+• Enabled secure log forwarding  
+• Verified agent status and connectivity  
 
----
+[Add screenshot: Wazuh agents dashboard]
 
-## **🔍 SOC Use Cases & "Money Shot" Results**
+## Tools and Technologies Used
+• Wazuh SIEM and XDR  
+• AWS EC2  
+• Windows Server 2022  
+• Wazuh Dashboard  
+• VirusTotal Threat Intelligence API  
 
-### **1. Compliance Hardening (CIS Benchmark)**
-**Objective:** Audit a production server against industry-standard benchmarks and remediate misconfigurations.
-* **The Baseline**: An automated audit against the **CIS Microsoft Windows Server 2022 Benchmark** revealed an initial compliance score of **26%** with **263 critical failures**.
-* **The Action**: Analyzed failure **ID 27003** (Minimum password length). I executed a system-wide policy hardening via PowerShell to enforce a 14-character minimum requirement.
-* **The Result**: Successfully triggered a real-time **"Passed" event**, validating the effectiveness of the control and improving the overall security posture.
+## Log Sources Collected
+• Windows Security event logs  
+• Windows System logs  
+• Windows Application logs  
+• Authentication and audit logs  
+• File integrity monitoring events  
 
-> ![Initial CIS Baseline](Screenshot%202025-12-26%20154111.png)
-> *Initial Audit: Identifying 263 failed security checks.*
+[Add screenshot: Log collection or events view]
 
----
+## Threat Detection Performed
+• Authentication success and failure monitoring  
+• Privilege escalation activity detection  
+• Suspicious process and service execution  
+• File modification and persistence behavior  
+• Alerts mapped to MITRE ATT&CK techniques  
 
-### **2. Threat Hunting & MITRE ATT&CK® Mapping**
-**Objective:** Map endpoint telemetry to adversary tactics to provide actionable incident visibility.
-* **Behavioral Detection**: Leveraged the Wazuh analysis engine to map events to **MITRE ATT&CK** tactics, identifying **Defense Evasion (T1562.001)** and **Privilege Escalation (T1484)**.
-* **Integrity Auditing**: Established **File Integrity Monitoring (FIM)** for sensitive directories (`C:\WazuhDemo`), capturing over **300 unique alerts** with detailed audit trails (User ID, Process, Timestamp).
+[Add screenshot: Alerts dashboard]
 
-> ![MITRE ATT&CK Dashboard](Screenshot%202025-12-26%20152941.jpg)
-> *SOC Workflow: Correlating endpoint telemetry with adversary techniques.*
+## Threat Hunting Workflow
+• Used dashboards to identify abnormal patterns  
+• Pivoted from alerts to raw event data  
+• Analyzed timestamps, users, and host context  
+• Followed structured SOC investigation methodology  
 
----
+[Add screenshot: Threat hunting or events pivot view]
 
-### **3. Automated Malware Triage & Active Response**
-**Objective:** Automate the containment of known threats using global threat intelligence.
-* **API Integration**: Engineered a secure integration between the Wazuh manager and the **VirusTotal API** for automated file reputation analysis.
-* **Simulation**: Created an **EICAR test file** on the endpoint. The SIEM instantly matched the file hash, queried VirusTotal, and generated a high-severity alert.
-* **Incident Containment**: Configured **Active Response** to trigger the `remove-threat.exe` command upon detection of VirusTotal-flagged threats, effectively automating the containment phase.
+## MITRE ATT&CK Alignment
+• Mapped detections to tactics and techniques  
+• Demonstrated visibility across the attack lifecycle  
+• Used framework driven validation during investigations  
 
-> ![VirusTotal Alert](Screenshot%202025-12-26%20021624.png)
-> *Detection Engineering: Automated high-severity alert for malicious hash detection.*
+[Add screenshot: MITRE ATT&CK mapping dashboard]
 
----
+## File Integrity Monitoring
+• Monitored critical Windows directories  
+• Detected unauthorized file creation and changes  
+• Generated real time alerts on modification events  
 
-## **🛠️ Detection Engineering: Custom FIM Rules**
-I engineered custom XML rules on the Wazuh Manager to flag suspicious tool transfers in sensitive directories, mapping them to **MITRE T1105 (Ingress Tool Transfer)**.
+[Add screenshot: File integrity monitoring alerts]
 
-### **Implementation (`local_rules.xml`)**
-```xml
-<group name="syscheck,custom_fim,">
-  <rule id="100001" level="7">
-    <if_sid>554</if_sid>
-    <field name="file">C:\\WazuhDemo</field>
-    <description>Security Alert: New file detected in sensitive directory (C:\WazuhDemo).</description>
-    <mitre><id>T1105</id></mitre>
-  </rule>
-</group>
+## Configuration Assessment
+• Applied CIS benchmark for Windows Server 2022  
+• Identified security misconfigurations  
+• Measured endpoint security posture  
 
-````
-### 🎯 SOC Analyst Core Competencies
-* **Log Correlation**: Expert at analyzing journald, syslog, and Windows event channels to identify anomalous patterns.
+[Add screenshot: Configuration assessment dashboard]
 
-* **Vulnerability Management**: Managing vulnerability-detection feeds with automated 60-minute update intervals.
+## Threat Intelligence Integration
+• Integrated VirusTotal with Wazuh  
+• Enriched alerts with file hash reputation data  
+• Reduced false positives  
+• Improved alert context and investigation accuracy  
 
-* **Endpoint Management**: Proficient in managing ossec.conf for optimized Syscollector and FIM performance.
+[Add screenshot: VirusTotal enriched alert]
 
+## Active Response
+• Configured automated response rules  
+• Blocked malicious source IP addresses  
+• Validated response execution on the endpoint  
 
+[Add screenshot: Active response execution]
+
+## Security Best Practices Applied
+• Masked API keys and sensitive configuration values  
+• Sanitized IP addresses for public sharing  
+• Followed least exposure principles  
+• Clearly documented lab versus production considerations  
+
+## What I Gained from This Project
+• Hands on SIEM deployment experience  
+• Real world threat detection and analysis skills  
+• SOC analyst investigation workflow practice  
+• Cloud security and networking knowledge  
+• Threat intelligence integration experience  
+• Confidence explaining alerts, risk, and mitigation  
+
+## Project Value
+• Demonstrates SOC readiness  
+• Shows practical detection and response capability  
+• Shows cloud security awareness  
+• Shows professional documentation and reporting skills  
+
+## Screenshots and Evidence
+• Architecture diagram  
+• Wazuh dashboard alerts view  
+• MITRE ATT&CK mapping view  
+• VirusTotal enriched alert example  
+• Agent and manager configuration files  
