@@ -1,4 +1,4 @@
-<ossec_config>
+````<ossec_config>
   <global>
     <jsonout_output>yes</jsonout_output>
     <alerts_log>yes</alerts_log>
