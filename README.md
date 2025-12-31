@@ -2,6 +2,9 @@
 
 ## Project Summary
 Built and operated a cloud based SIEM by deploying Wazuh on AWS EC2 and integrating a Windows Server 2022 endpoint. I configured secure communication, collected endpoint telemetry, enabled compliance and file integrity monitoring, enriched alerts with threat intelligence, mapped detections to the MITRE ATT&CK framework, and performed threat hunting using dashboards and event level analysis following a real SOC analyst workflow.
+### Project Architecture <p align="left">
+  <img src="Screenshots/Project-Diagram.png" alt="Project Architecture" width="60%">
+</p>
 
 ## Project Objectives
 • Build a cloud based SIEM environment  
@@ -14,16 +17,18 @@ Built and operated a cloud based SIEM by deploying Wazuh on AWS EC2 and integrat
 • Configured AWS security groups for controlled access  
 • Enabled TLS encrypted agent to manager communication  
 • Accessed Wazuh dashboard securely over HTTPS  
-
-[Add screenshot: AWS EC2 instance and security group configuration]
+### Inbound Rules <p align="left">
+  <img src="Screenshots/EC2-Enstance-security-group-inbound-rules.png" alt="EC2 Security Group Rules" width="450">
+</p>
 
 ## Endpoint Configuration
 • Installed Wazuh agent on Windows Server 2022  
 • Enrolled agent with the Wazuh Manager  
 • Enabled secure log forwarding  
 • Verified agent status and connectivity  
-
-[Add screenshot: Wazuh agents dashboard]
+### Wazuh Manager <p align="left">
+  <img src="Screenshots/agent-added-dash.png" alt="Wazuh Agent Dashboard" width="450">
+</p>
 
 ## Tools and Technologies Used
 • Wazuh SIEM and XDR  
@@ -38,61 +43,67 @@ Built and operated a cloud based SIEM by deploying Wazuh on AWS EC2 and integrat
 • Windows Application logs  
 • Authentication and audit logs  
 • File integrity monitoring events  
-
-[Add screenshot: Log collection or events view]
+### Logs Collected <p align="left">
+  <img src="Screenshots/Threat-hunting-dashboard.png" alt="Wazuh Threat Hunting Dashboard" width="450">
+</p>
 
 ## Threat Detection Performed
 • Authentication success and failure monitoring  
 • Privilege escalation activity detection  
 • Suspicious process and service execution  
 • File modification and persistence behavior  
-• Alerts mapped to MITRE ATT&CK techniques  
-
-[Add screenshot: Alerts dashboard]
+• Alerts mapped to MITRE ATT&CK techniques
+### Mitre Att&ck Techniques <p align="left">
+  <img src="Screenshots/Miter-att%26ck-techniques.png" alt="MITRE ATT&CK Techniques" width="450">
+</p>
 
 ## Threat Hunting Workflow
 • Used dashboards to identify abnormal patterns  
 • Pivoted from alerts to raw event data  
 • Analyzed timestamps, users, and host context  
 • Followed structured SOC investigation methodology  
-
-[Add screenshot: Threat hunting or events pivot view]
+### Threat Hunting Events
+<p align="left">
+  <img src="Screenshots/Threat-hunting-events.png" alt="Wazuh Threat Hunting Events" width="450">
+</p>
 
 ## MITRE ATT&CK Alignment
 • Mapped detections to tactics and techniques  
 • Demonstrated visibility across the attack lifecycle  
 • Used framework driven validation during investigations  
-
-[Add screenshot: MITRE ATT&CK mapping dashboard]
+### Analytical Value <p align="left">
+<img src="Screenshots/Mitre-att%26ck-dashboard.png" alt="MITRE ATT&CK Dashboard" width="450">
+</p>
 
 ## File Integrity Monitoring
 • Monitored critical Windows directories  
 • Detected unauthorized file creation and changes  
 • Generated real time alerts on modification events  
-
-[Add screenshot: File integrity monitoring alerts]
+### FIN Alerts <p align="left">
+  <img src="Screenshots/file-integrity-monitor-dash-added-modified-deleted.png" alt="File Integrity Monitoring Dashboard" width="450">
+</p>
 
 ## Configuration Assessment
 • Applied CIS benchmark for Windows Server 2022  
 • Identified security misconfigurations  
 • Measured endpoint security posture  
-
-[Add screenshot: Configuration assessment dashboard]
+### Benchmark <p align="left">
+  <img src="Screenshots/Configuration-assessment-dashboard.png" alt="Configuration Assessment Dashboard" width="450">
+</p>
 
 ## Threat Intelligence Integration
 • Integrated VirusTotal with Wazuh  
 • Enriched alerts with file hash reputation data  
 • Reduced false positives  
 • Improved alert context and investigation accuracy  
-
-[Add screenshot: VirusTotal enriched alert]
+### SIEM Integration <p align="left">
+  <img src="Screenshots/VirusTotal-usage%20.png" alt="VirusTotal Integration Usage" width="450">
+</p>
 
 ## Active Response
 • Configured automated response rules  
 • Blocked malicious source IP addresses  
 • Validated response execution on the endpoint  
-
-[Add screenshot: Active response execution]
 
 ## Security Best Practices Applied
 • Masked API keys and sensitive configuration values  
