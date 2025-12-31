@@ -1,4 +1,4 @@
-<ossec_config>
+````<ossec_config>
   <client>
     <server>
       <address>WAZUH_MANAGER_PUBLIC_IP</address>
