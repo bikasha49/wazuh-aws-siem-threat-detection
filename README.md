@@ -3,7 +3,7 @@
 ## Project Summary
 Built and operated a cloud based SIEM by deploying Wazuh on AWS EC2 and integrating a Windows Server 2022 endpoint. I configured secure communication, collected endpoint telemetry, enabled compliance and file integrity monitoring, enriched alerts with threat intelligence, mapped detections to the MITRE ATT&CK framework, and performed threat hunting using dashboards and event level analysis following a real SOC analyst workflow.
 ### Project Architecture <p align="left">
-  <img src="https://github.com/bikasha49/wazuh-aws-siem-threat-detection/blob/654889d6b134f77e6d29ec7666e299e185afcb98/Screenshots/Wazuh-architecture-diagram.png?raw=true" alt="Project Architecture" width="50%">
+  <img src="https://github.com/bikasha49/wazuh-aws-siem-threat-detection/blob/654889d6b134f77e6d29ec7666e299e185afcb98/Screenshots/Wazuh-architecture-diagram.png?raw=true" alt="Project Architecture" width="60%">
 
 ## Project Objectives
 • Build a cloud based SIEM environment  
@@ -125,7 +125,12 @@ Built and operated a cloud based SIEM by deploying Wazuh on AWS EC2 and integrat
 • Shows professional documentation and reporting skills  
 
 ## Screenshots and Evidence
-• Screenshots
+## Screenshots and Evidence
+
+[![Project Screenshots](https://github.com/bikasha49/wazuh-aws-siem-threat-detection/blob/main/Screenshots/Wazuh-architecture-diagram.png?raw=true)](https://github.com/bikasha49/wazuh-aws-siem-threat-detection/tree/main/Screenshots)
+
+
+
 ### 🌐 Let's Connect
 <a href="https://www.linkedin.com/in/bikasha-gurung">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn" />
