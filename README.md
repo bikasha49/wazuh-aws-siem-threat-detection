@@ -103,7 +103,7 @@ Built and operated a cloud based SIEM by deploying Wazuh on AWS EC2 and integrat
 • Detected unauthorized file creation and changes  
 • Generated real time alerts on modification events  
 
-### FIN Alerts 
+### FIM Alerts 
 <p align="left">
   <img
     src="https://github.com/bikasha49/wazuh_aws_soc_threat_hunting_lab/blob/6d36870877a444f1de15f8f2afdf61cfeaefff43/screenshots/file_integrity_monitor_dash_added_modified_deleted.png"
